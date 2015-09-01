@@ -1,0 +1,27 @@
+<div  class="navbar-fixed">
+  <nav  role="navigation" class="teal z-depth-3">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Yearbook</a>
+      <ul class="right hide-on-med-and-down">
+         <li><%=link_to "Home",  root_path %></li>
+         <li><a href="#">About Us</a></li>
+         <% if user_signed_in? %>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+         <% else %>
+            <li><%=link_to "Sign In",  new_user_session_path %></li>
+        <% end %>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+         <li><%=link_to "Home",  root_path %></li>
+        <li><a href="#">About Us</a></li>
+        <% if user_signed_in? %>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+         <% else %>
+            <li><%=link_to "Sign In",  new_user_session_path %></li>
+        <% end %>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</div>
