@@ -8,7 +8,7 @@
         </div>
         <div class="row center">
           <% if user_signed_in? %>
-            <%= link_to('Edit registration', edit_user_registration_path) %>
+            <%= link_to "Edit registration", edit_user_registration_path,{ class:"btn-large waves-effect waves-light teal lighten-1", id:"download-button"} %>
           <% else %>
             <%=link_to "Sign Up",  new_user_registration_path ,{ class:"btn-large waves-effect waves-light teal lighten-1", id:"download-button"} %>
           <% end %>
