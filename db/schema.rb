@@ -11,16 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828103232) do
+ActiveRecord::Schema.define(version: 20150909001421) do
+
+  create_table "educations", force: :cascade do |t|
+    t.string   "institution_name"
+    t.string   "course"
+    t.date     "from"
+    t.date     "to"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+  end
+
+  add_index "educations", ["user_id"], name: "index_educations_on_user_id"
+
+  create_table "occupations", force: :cascade do |t|
+    t.string   "company_name"
+    t.string   "position"
+    t.date     "from"
+    t.date     "to"
+    t.string   "city"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+  end
+
+  add_index "occupations", ["user_id"], name: "index_occupations_on_user_id"
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "address"
+    t.string   "phone_number"
+    t.string   "school_email"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -31,10 +65,18 @@ ActiveRecord::Schema.define(version: 20150828103232) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date_of_birth"
+    t.string   "city"
+    t.text     "about_me"
+    t.boolean  "is_admin",               default: false
+    t.integer  "user_type",              default: 0
+    t.string   "gender"
+    t.integer  "school_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["school_id"], name: "index_users_on_school_id"
 
 end

@@ -1,0 +1,86 @@
+<div class="row"> 
+  <div class="col s6 offset-s3">
+    <div class="card-panel hoverable">
+        <h3>EDIT</h3>
+
+         <%= form_for(@user) do |f| %>
+             
+            <div class="input-field">
+                 <%= f.label :name %>
+                 <%= f.text_field :name %>
+             </div>
+             
+            <div class="input-field">
+                <%= f.label :date_of_birth %><br />
+                <%=f.date_field(:date_of_birth, :class => "datepicker")%>
+            </div>
+                
+                
+            <div class="input-field">
+                <%= f.label :city %><br />
+                <%= f.text_field :city, autofocus: true %>
+            </div>
+            
+            <%= f.fields_for :educations do |ff| %>
+                <div>
+                    <%= ff.label :institution_name %>
+                    <%= ff.text_field :institution_name %>
+                </div>
+              
+                <div>
+                    <%= ff.label :course %>
+                    <%= ff.text_field :course %>
+                </div>
+                
+                <div class="input-field">
+                    <%= f.label :from %><br />
+                    <%=f.date_field(:from, :class => "datepicker")%>
+                </div>
+                
+                <div class="input-field">
+                    <%= f.label :to %><br />
+                    <%=f.date_field(:to, :class => "datepicker")%>
+                </div>
+            
+            <% end %>
+            
+            <%= f.fields_for :occupations do |ff| %>
+                <div class="input-field">
+                    <%= ff.label :company_name %>
+                    <%= ff.text_field :company_name %>
+                </div>
+              
+                <div class="input-field">
+                    <%= ff.label :position %>
+                    <%= ff.text_field :position %>
+                </div>
+                
+                <div class="input-field">
+                    <%= f.label :from %><br />
+                    <%=f.date_field(:from, :class => "datepicker")%>
+                </div>
+                
+                <div class="input-field">
+                    <%= f.label :to %><br />
+                    <%=f.date_field(:to, :class => "datepicker")%>
+                </div>
+                
+                 <div class="input-field">
+                    <%= ff.label :city %>
+                    <%= ff.text_field :city %>
+                </div>
+                
+            <% end %>
+                
+            <div class="input-field">
+                <%= f.label :about_me %>
+                <%= f.text_area :about_me, autofocus: true %>
+            </div>
+                
+            
+              <%= f.submit "Save changes"%>
+        <% end %>
+            
+    </div>
+  </div>
+</div>
